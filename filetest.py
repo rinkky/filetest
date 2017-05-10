@@ -14,14 +14,12 @@ class LogThread(threading.Thread):
     def __init__(self, log_queue, log_file):
         threading.Thread.__init__(self)
         self._log_queue = log_queue
-        self.running = False
         self.log_file = log_file
         self.file_stream = open(log_file, "a")
+        self.daemon = True
 
     def run(self):
-        self.running = True
-
-        while self.running:
+        while True:
             if(self._log_queue.empty()):
                 time.sleep(1)
                 continue
@@ -29,9 +27,6 @@ class LogThread(threading.Thread):
             print(log)
             self.file_stream.write(log+"\n")
         self.file_stream.close()
-
-    def stop(self):
-        self.running = False
 
 
 def run_test(test_name, methods, files, log_queue, is_file_first=True):
