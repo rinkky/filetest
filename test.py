@@ -22,9 +22,5 @@ filetest.run_test("testtest", methods, files, log_queue)
 
 while not log_queue.empty():
 	time.sleep(1)
-
-while log_thread.running:
-	log_thread.stop()
-	time.sleep(1)
-
-print("exit")
+	
+print("exit") 

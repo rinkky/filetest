@@ -1,54 +1,42 @@
-2017-05-11 01:31:43------------------
-
-[PASS] - testlog.py: file size is 2680 bytes
-
-[ERROR] - testlog.py: file size is 2680 bytes
-
-2017-05-11 01:46:55------------------
-
-[PASS] - testlog.py: file size is 2680 bytes
-
-[ERROR] - testlog.py: file size is 2680 bytes
-
-2017-05-11 01:52:10------------------
-
-[PASS] - testlog.py: file size is 2680 bytes
-
-[ERROR] - testlog.py: file size is 2680 bytes
-
-2017-05-11 01:59:30------------------
-
-[PASS] - testlog.py: file size is 2680 bytes
-
-[ERROR] - testlog.py: file size is 2680 bytes
-
-2017-05-11 01:59:36------------------
-
-[PASS] - testlog.py: file size is 2680 bytes
-
-[ERROR] - testlog.py: file size is 2680 bytes
-
-2017-05-11 02:05:00------------------
-
-[PASS] - testlog.py: file size is 2680 bytes
-
-[ERROR] - testlog.py: file size is 2680 bytes
-
-2017-05-11 02:05:06------------------
-
-[PASS] - testlog.py: file size is 2680 bytes
-
-[ERROR] - testlog.py: file size is 2680 bytes
-
-2017-05-11 02:06:31------------------
-
-[PASS] - testlog.py: file size is 2680 bytes
-
-[ERROR] - testlog.py: file size is 2680 bytes
-
-2017-05-11 02:09:28------------------
+2017-05-11 02:19:53------------------
 
 [PASS] - testlog.py: file size is 2680 bytes, min is 0
 
 [ERROR] - testlog.py: file size is 2680 bytes, max is 1000
+
+2017-05-11 02:38:27------------------
+
+[PASS] - testlog.py: file size is 2680 bytes, min is 0
+
+[ERROR] - testlog.py: file size is 2680 bytes, max is 1000
+
+2017-05-11 02:38:57------------------
+
+[PASS] - testlog.py: file size is 2680 bytes, min is 0
+
+[ERROR] - testlog.py: file size is 2680 bytes, max is 1000
+
+2017-05-11 02:39:28------------------
+
+[PASS] - testlog.py: file size is 2680 bytes, min is 0
+
+[ERROR] - testlog.py: file size is 2680 bytes, max is 1000
+
+[begin]2017-05-11 10:20:11------------------
+
+[PASS] - testlog.py: file size is 2680 bytes, min is 0
+
+[ERROR] - testlog.py: file size is 2680 bytes, max is 1000
+
+[end]2017-05-11 10:20:11------------------
+
+
+
+[begin]2017-05-11 10:22:05------------------
+
+[PASS] - testlog.py: file size is 2680 bytes, min is 0
+
+[ERROR] - testlog.py: file size is 2680 bytes, max is 1000
+
+[end]2017-05-11 10:22:05------------------
 
