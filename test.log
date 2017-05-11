@@ -1,0 +1,66 @@
+
+
+[begin]2017-05-12 01:06:01------------------
+
+[ERROR] - test.txt: asc test(col:0,row:2,value:1
+
+[PASS] - test.txt: unique test
+
+[end]2017-05-12 01:06:01------------------
+
+
+
+[begin]2017-05-12 01:48:33------------------
+
+[ERROR] - test.txt: asc test: (col:0,row:2,value:1)
+
+[ERROR] - test.txt: null test: (col:c,row:2,value),(col:d,row:2,value)
+
+[ERROR] - test.txt: type test: (col:2,row:2,value:),(col:3,row:2,value: )
+
+[PASS] - test.txt: unique test
+
+[end]2017-05-12 01:48:33------------------
+
+
+
+[begin]2017-05-12 01:49:57------------------
+
+[ERROR] - test.txt: asc test: (col:0,row:2,value:1)
+
+[ERROR] - test.txt: null test: (col:c,row:2,value:),(col:d,row:2,value:)
+
+[ERROR] - test.txt: type test: (col:2,row:2,value:),(col:3,row:2,value: )
+
+[ERROR] - test.txt: unique test(col:a,row:3,value:2)
+
+[end]2017-05-12 01:49:57------------------
+
+
+
+[begin]2017-05-12 01:52:59------------------
+
+[ERROR] - test.txt: asc test: (col:0,row:2,value:1)
+
+[ERROR] - test.txt: null test: (col:c,row:2,value:),(col:d,row:2,value:),(col:c,row:3,value:)
+
+[ERROR] - test.txt: type test: (col:2,row:2,value:),(col:3,row:2,value: ),(col:2,row:3,value:)
+
+[ERROR] - test.txt: unique test(col:a,row:3,value:2)
+
+[end]2017-05-12 01:52:59------------------
+
+
+
+[begin]2017-05-12 01:55:00------------------
+
+[ERROR] - test.txt: asc test: (col:0,row:2,value:1)
+
+[ERROR] - test.txt: null test: (col:c,row:2,value:),(col:d,row:2,value:),(col:c,row:3,value:)
+
+[ERROR] - test.txt: type test: (col:2,row:2,value:),(col:3,row:2,value: ),(col:2,row:3,value:)
+
+[ERROR] - test.txt: unique test(col:a,row:3,value:2)
+
+[end]2017-05-12 01:55:00------------------
+
