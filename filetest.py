@@ -12,9 +12,6 @@ from utils import *
 
 class LogThread(threading.Thread):
     """the thread to handle logs
-
-    you can use this to print log and save log files.
-    or you can make your own tread to deal with log.
     """
     def __init__(self, log_queue, log_file):
         threading.Thread.__init__(self)
@@ -42,7 +39,8 @@ def run_test(test_name, methods, files, log_queue, is_file_first=True):
     Args:
         test_name: a string to sign this test.
 
-        methods: a string list to store all the function name.
+        methods: a string list to store all the function name. the first 
+            element is a flag.
         
         files: a list of files to be tested.
         
@@ -54,8 +52,7 @@ def run_test(test_name, methods, files, log_queue, is_file_first=True):
     """
     logger = TestLog(log_queue, test_name)
     logger.normallog(
-        "\n\n[begin]"
-        +time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         +"------------------"
     )
     if(is_file_first):
