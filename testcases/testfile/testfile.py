@@ -3,6 +3,11 @@
 
 import os
 
+def setup(path, logger):
+	"""setup
+	"""
+	pass
+
 def test_nomal_file(path, logger):
 	"""nomal test
 	"""
@@ -19,3 +24,7 @@ def test_nomal_file(path, logger):
 		"file size is {0} bytes, max is {1}".format(size, max_size)
 	)
 
+def teardown(path, logger):
+	"""teardown
+	"""
+	pass

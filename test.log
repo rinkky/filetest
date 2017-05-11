@@ -40,3 +40,81 @@
 
 [end]2017-05-11 10:22:05------------------
 
+
+
+[begin]2017-05-11 14:29:23------------------
+
+[PASS] - testlog.py: file size is 2680 bytes, min is 0
+
+[ERROR] - testlog.py: file size is 2680 bytes, max is 1000
+
+[end]2017-05-11 14:29:23------------------
+
+
+
+[begin]2017-05-11 14:31:16------------------
+
+[PASS] - testlog.py: file size is 2680 bytes, min is 0
+
+[ERROR] - testlog.py: file size is 2680 bytes, max is 1000
+
+[end]2017-05-11 14:31:16------------------
+
+
+
+[begin]2017-05-11 14:33:59------------------
+
+[PASS] - testlog.py: file size is 2680 bytes, min is 0
+
+[ERROR] - testlog.py: file size is 2680 bytes, max is 1000
+
+[end]2017-05-11 14:33:59------------------
+
+
+
+[begin]2017-05-11 17:37:06------------------
+
+
+
+[begin]2017-05-11 17:41:56------------------
+
+
+
+[begin]2017-05-11 17:42:21------------------
+
+
+
+[begin]2017-05-11 17:49:14------------------
+
+[ERROR] - test.txt: unique test
+
+[end]2017-05-11 17:49:14------------------
+
+
+
+[begin]2017-05-11 17:49:52------------------
+
+[PASS] - test.txt: unique test
+
+[end]2017-05-11 17:49:52------------------
+
+
+
+[begin]2017-05-11 17:50:33------------------
+
+[ERROR] - test.txt: unique test
+
+[PASS] - test.txt: unique test
+
+[end]2017-05-11 17:50:33------------------
+
+
+
+[begin]2017-05-11 17:50:45------------------
+
+[ERROR] - test.txt: asc test
+
+[PASS] - test.txt: unique test
+
+[end]2017-05-11 17:50:45------------------
+
