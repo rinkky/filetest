@@ -13,12 +13,13 @@ from utils import *
 class LogThread(threading.Thread):
     """the thread to handle logs
     """
-    def __init__(self, log_queue, log_file):
+    def __init__(self, log_queue, log_file, fail_only=True):
         threading.Thread.__init__(self)
         self._log_queue = log_queue
         self.log_file = log_file
         self.file_stream = open(log_file, "a")
         self.daemon = True
+        self.fail_only = fail_only
 
     def run(self):
         while True:
@@ -27,7 +28,11 @@ class LogThread(threading.Thread):
                 continue
             log = self._log_queue.get(False)
             print(log)
+            if(self.fail_only == True and log.startswith("[PASS]")):
+                continue
             self.file_stream.write(log+"\n")
+            if(log.startswith("[end]")):
+                break
         self.file_stream.close()
 
 

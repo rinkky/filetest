@@ -116,17 +116,20 @@ def value_type_check(table_rows):
     lst = []
     row_num = 0
     for row in table_rows:
+        print(row.values)
+        print(row.types)
         for i in range(0, len(row.values)):
             data_type = types[i].strip().upper()
+            value = row.values[i].strip()
             if(data_type == "INT"):
-                if(not _is_int(row.values[i])):
+                if(value != "" and _is_int(value) == False):
                     rst = False
                     lst.append("(col:{0},row:{1},value:{2})".format(
                         i, row_num, row.values[i]
                     ))
 
             elif(data_type == "FLOAT"):
-                if(not _is_float(row.values[i])):
+                if(value != "" and _is_float(value) == False):
                     rst = False
                     lst.append("(col:{0},row:{1},value:{2})".format(
                         i, row_num, row.values[i]
@@ -156,10 +159,64 @@ def not_null(table_rows, col_name_list=[], col_num_list=[]):
         for key in keys:
             if(row.kv[key].strip() == ""):
                 rst = False
-                lst.append("(col:{0},row:{1},value:{2})".format(
-                    key, row_num, row.kv[key].strip()
+                lst.append("(col:{0},row:{1})".format(
+                    key, row_num
                 ))
         row_num += 1
+    return rst,",".join(lst)
+
+def value_in(table_rows, values=[], col_name="", col_num=0):
+    """if the specific col data in values
+
+    Args:
+        values: a list like [0, 1], if any cell data not in values, return False
+        col_name: col key
+        col_num: number of col. if col_name=="" then use col_num to find col
+
+    returns:
+        rst: True or False
+        str: a string that containe error detail
+    """
+    key = col_name
+    if(key==""):
+        key = table_rows[0].keys[col_num]
+    rst = True
+    lst = []
+    for i in range(len(table_rows)):
+        value = table_rows[i].kv[key].strip()
+        if(value not in values):
+            rst = False
+            lst.append("(col:{0},row:{1}:value:{2}".format(
+                key, i, value
+            ))
+    return rst,",".join(lst)
+
+def value_between(table_rows, min, max, col_name="", col_num=0, left=True, right=True):
+    """if the specific col data begin min and max
+
+    Args:
+        min: min
+        max: max
+        col_name: col key
+        col_num: number of col. if col_name=="" then use col_num to find col
+        left: contain min
+        right: contain max
+    returns:
+        rst: True or False
+        str: a string that containe error detail
+    """
+    key = col_name
+    if(key==""):
+        key = table_rows[0].keys[col_num]
+    rst = True
+    lst = []
+    for i in range(len(table_rows)):
+        value = table_rows[i].kv[key].strip()
+        if(not _v_between_min_max(value, min, max, left, right)):
+            rst = False
+            lst.append("(col:{0},row{1},value:{2}".format(
+                key, i, value
+            ))
     return rst,",".join(lst)
 
 def _is_int(_str):
@@ -170,3 +227,12 @@ def _is_float(_str):
     p = re.compile(r"\d+(\.\d+)?")
     return (p.match(_str.strip()) != None)
 
+def _v_between_min_max(v, min, max, left, right):
+    if(left and right):
+        return min <= v <= max
+    elif(left == True and right == False):
+        return min <= v < max
+    elif(left == False and right == True):
+        return min < v <= max
+    else:
+        return min < v < max

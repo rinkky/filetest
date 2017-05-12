@@ -18,7 +18,7 @@ def test_asc(file, logger):
 
 def test_not_null(file, logger):
     r = txttable.not_null(txt_file,col_name_list=["a","b","c","d"])
-    logger.test_true(r[0], file, "null test: "+r[1])
+    logger.test_true(r[0], file, "not_null test: "+r[1])
 
 def test_type(file, logger):
     r = txttable.value_type_check(txt_file)
