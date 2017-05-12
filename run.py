@@ -4,7 +4,7 @@ import Queue
 import glob
 import time
 
-import config
+from config import config
 import filetest
 from filetest import LogThread
 import testlog

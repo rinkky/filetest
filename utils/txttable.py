@@ -12,6 +12,32 @@ class TxtTableRow(object):
         self.values = values
         self.kv = dict(zip(keys, values))
 
+    def get_index(self, key):
+        """get index by key
+        """
+        return self.keys.index(key)
+
+    def get_type(self, key):
+        """get type by key
+        """
+        index = self.get_index(key)
+        return self.types[index]
+
+    def get_d_value(self, key="", index=-1):
+        """get int or float or string
+        """
+        _key = key
+        _index = index
+        if(_index < 0):
+            _index = self.get_index(_key)
+        _value = self.values[_index].strip()
+        _type = self.types[_index].strip().lower()
+        if _type == "string" or _type == "":
+            return _value
+        if _value == "":
+            return 0
+        return eval(_type)(_value)
+
 
 def open_txt_table(txt_file, data_start_with=2,keys_line=0, types_line=1, split_char="\t"):
     """open txt file. return a list.
@@ -65,8 +91,8 @@ def is_asc(table_rows, col_name="", col_num=0):
         index = table_rows[0].keys.index(col_name)
     for i in range(0, len(table_rows)-1):
         j = i+1
-        value1 = table_rows[i].values[index]
-        value2 = table_rows[j].values[index]
+        value1 = table_rows[i].get_d_value(index=index)
+        value2 = table_rows[j].get_d_value(index=index)
         if(value1 >= value2):
             rst = False
             lst.append("(col:{0},row:{1},value:{2})".format(
@@ -116,8 +142,6 @@ def value_type_check(table_rows):
     lst = []
     row_num = 0
     for row in table_rows:
-        print(row.values)
-        print(row.types)
         for i in range(0, len(row.values)):
             data_type = types[i].strip().upper()
             value = row.values[i].strip()
@@ -183,7 +207,7 @@ def value_in(table_rows, values=[], col_name="", col_num=0):
     rst = True
     lst = []
     for i in range(len(table_rows)):
-        value = table_rows[i].kv[key].strip()
+        value = table_rows[i].get_d_value(key)
         if(value not in values):
             rst = False
             lst.append("(col:{0},row:{1}:value:{2}".format(
@@ -211,7 +235,7 @@ def value_between(table_rows, min, max, col_name="", col_num=0, left=True, right
     rst = True
     lst = []
     for i in range(len(table_rows)):
-        value = table_rows[i].kv[key].strip()
+        value = table_rows[i].get_d_value(key)
         if(not _v_between_min_max(value, min, max, left, right)):
             rst = False
             lst.append("(col:{0},row{1},value:{2}".format(
