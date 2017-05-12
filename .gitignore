@@ -57,3 +57,4 @@ target/
 
 # filetest
 config/config.py
+log/

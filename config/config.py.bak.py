@@ -1,23 +1,28 @@
 # coding=utf-8
+
+# models: all models where testcases is.
+# files: all files to be tested.
 collection = [
     {
-        "name":"test_test",
+        "name":"sample1",
         "models":[
             "testcases.testfile.testfile",
             "testcases.txttable.testtest"
         ],
         "files":[
-            "test*.txt",
+            r"samples/test*.txt",
         ]
     },
     {
-        "name":"test_test1",
+        "name":"sample2",
         "models":[
             "testcases.testfile.testfile",
         ],
         "files":[
-            "test*.txt",
+            r"samples/test*.txt",
         ]
     },
-
 ]
+
+#the base log path, such as r"E:\res\log" or r"/home/rinkky/log"
+log_base_path=r"log" 

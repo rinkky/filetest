@@ -10,31 +10,6 @@ import testcases.txttable
 import testcases.txttable.testtest
 from utils import *
 
-class LogThread(threading.Thread):
-    """the thread to handle logs
-    """
-    def __init__(self, log_queue, log_file, fail_only=True):
-        threading.Thread.__init__(self)
-        self._log_queue = log_queue
-        self.log_file = log_file
-        self.file_stream = open(log_file, "a")
-        self.daemon = True
-        self.fail_only = fail_only
-
-    def run(self):
-        while True:
-            if(self._log_queue.empty()):
-                time.sleep(1)
-                continue
-            log = self._log_queue.get(False)
-            print(log)
-            if(self.fail_only == True and log.startswith("[PASS]")):
-                continue
-            self.file_stream.write(log+"\n")
-            if(log.startswith("[end]")):
-                break
-        self.file_stream.close()
-
 
 def run_test(test_name, methods, files, log_queue, is_file_first=True):
     """Run a series of testcase.
@@ -89,7 +64,7 @@ def run_test_by_model(test_name, models, files, log_queue):
     """
     logger = TestLog(log_queue, test_name)
     logger.normallog(
-        "\n\n[begin]"
+        "\n\n"+ logger.BEGIN_FLAG
         +time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         +"------------------"
     )
@@ -107,7 +82,7 @@ def run_test_by_model(test_name, models, files, log_queue):
                 eval(model + ".teardown")(file, logger)
 
     logger.normallog(
-        "[end]"
+        logger.END_FLAG
         +time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         +"------------------"
     )
