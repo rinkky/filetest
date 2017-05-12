@@ -77,7 +77,7 @@ def open_txt_table(txt_file, data_start_with=2,keys_line=0, types_line=1, split_
     file.close()
     return txt_table_rows
 
-def is_asc(table_rows, col_name="", col_num=0):
+def is_asc(table_rows, col_name="", col_num=-1):
     """check if the spacific col of the table_row is asc.
 
     Args:
@@ -189,7 +189,7 @@ def not_null(table_rows, col_name_list=[], col_num_list=[]):
         row_num += 1
     return rst,",".join(lst)
 
-def value_in(table_rows, values=[], col_name="", col_num=0):
+def value_in(table_rows, values=[], col_name="", col_num=-1):
     """if the specific col data in values
 
     Args:
@@ -243,12 +243,35 @@ def value_between(table_rows, min, max, col_name="", col_num=0, left=True, right
             ))
     return rst,",".join(lst)
 
+def path_exist(table_rows, base_path, col_name="", col_num=-1):
+    """check if the path in col exist.
+
+    Args:
+        base_path: string. realpath = base_path + path
+        col_name: col to check
+        col_num: if col_name=="", then use col_num to find col.
+    """
+    key = col_name
+    if(key==""):
+        key = table_rows[0].keys[col_name]
+    rst = True
+    lst = []
+    for row in range(table_rows):
+        value = row.get_d_value(key)
+        path = os.path.join(base_path,value)
+        if(not os.path.exist(path)):
+            rst = False
+            lst.append("(col:{0},value:{1})".format(
+                key, value
+            ))
+    return rst,",".join(lst)
+
 def _is_int(_str):
-    p = re.compile(r"\d+$")
+    p = re.compile(r"-?\d+$")
     return (p.match(_str.strip()) != None)
 
 def _is_float(_str):
-    p = re.compile(r"\d+(\.\d+)?")
+    p = re.compile(r"-?\d+(\.\d+)?")
     return (p.match(_str.strip()) != None)
 
 def _v_between_min_max(v, min, max, left, right):
